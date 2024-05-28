@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { useState } from "react";
+import { useRef, useState } from "react";
 import useMyStore from "../store";
 
 const Segment = ({ index, segment, operatorType }) => {
@@ -7,8 +7,9 @@ const Segment = ({ index, segment, operatorType }) => {
   const [segmentValue, setSegmentValue] = useState(segment.value);
   const segmentJson = useMyStore((state) => state.segmentJson);
   const setSegmentJson = useMyStore((state) => state.setSegmentJson);
-  const onValueUpdate = (newValue) => {
-    const newSegmentJson = JSON.parse(JSON.stringify(segmentJson));
+  const onValueUpdate = (newValue, json?) => {
+    console.log("new value", newValue)
+    const newSegmentJson = json || JSON.parse(JSON.stringify(segmentJson));
     if (newSegmentJson.key == segment.key) {
       newSegmentJson.segments.splice(index, 1);
       setSegmentJson(newSegmentJson);
@@ -78,6 +79,7 @@ const Segment = ({ index, segment, operatorType }) => {
         }
       }
     }
+    onValueUpdate(newType === "text" ? "" : "1", newSegmentJson);
   };
   const onDelete = () => {
     const newSegmentJson = JSON.parse(JSON.stringify(segmentJson));
@@ -117,7 +119,7 @@ const Segment = ({ index, segment, operatorType }) => {
       }
     }
   };
-
+  const valueElemRef = useRef(null);
   return (
     <div>
       <div>{index === 0 && "WHERE"}</div>

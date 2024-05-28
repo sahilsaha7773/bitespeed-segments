@@ -6,7 +6,7 @@ const data ={
   segments: [
     {
       key: "a",
-      type: "text", value: null
+      type: "text", value: ""
     },
     // {
     //   key: "b",
