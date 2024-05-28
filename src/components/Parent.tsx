@@ -1,4 +1,4 @@
-// @ts-nocheck 
+// @ts-nocheck
 import useMyStore from "../store";
 import SegmentListComponent from "./SegmentList";
 
@@ -45,7 +45,12 @@ const modifyJSON = (json, parentKey, newKey, setSegmentJson) => {
   }
 };
 
-const Parent = ({ parent, parentKey }) => {
+const Parent = ({
+  parent,
+  parentKey,
+  onDeleteGroup,
+  showDeleteGroupBtn = true,
+}) => {
   const segmentJson = useMyStore((state) => state.segmentJson);
   const setSegmentJson = useMyStore((state) => state.setSegmentJson);
   const key = useMyStore((state) => state.key);
@@ -199,11 +204,22 @@ const Parent = ({ parent, parentKey }) => {
         margin: "10px",
       }}
     >
-      <select value={parent.operatorType} onChange={handleOperatorChange}>
-        <option value="AND">AND</option>
-        <option value="OR">OR</option>
-      </select>
+      <div
+        style={{
+          display: "flex",
+          gap: "40px"
+        }}
+      >
+        <select value={parent.operatorType} onChange={handleOperatorChange}>
+          <option value="AND">AND</option>
+          <option value="OR">OR</option>
+        </select>
+        {showDeleteGroupBtn && (
+          <button onClick={onDeleteGroup}>Delete Filter Group</button>
+        )}
+      </div>
       <SegmentListComponent list={parent} />
+
       <div>
         <button onClick={onAddFilterGroup}>Add Filter Group</button>
         <button onClick={onAddFilterRule}>Add Filter Rule</button>

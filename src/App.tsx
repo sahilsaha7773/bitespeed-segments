@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-      <Parent parent={segmentJson} parentKey={segmentJson.key} />
+      <Parent parent={segmentJson} parentKey={segmentJson.key} showDeleteGroupBtn={false} />
       <div>
         <div>{JSON.stringify(segmentJson)}</div>
         <textarea
