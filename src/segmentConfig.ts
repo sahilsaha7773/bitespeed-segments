@@ -1,8 +1,4 @@
-type segment = {
-  type: string;
-  operatorType?: string;
-  group: [segment]
-}
+
 // a & b & (c || d)
 const data ={
   key: "root",

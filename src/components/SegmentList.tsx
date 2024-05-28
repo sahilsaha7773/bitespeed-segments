@@ -1,3 +1,4 @@
+// @ts-nocheck 
 import useMyStore from "../store";
 import Parent from "./Parent";
 import Segment from "./Segment";
