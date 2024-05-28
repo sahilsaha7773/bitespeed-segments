@@ -31,7 +31,7 @@ const SegmentListComponent = ({ list }) => {
           key={index}
           index={index}
           segment={segment}
-          operatorType={parent.operatorType}
+          operatorType={list.operatorType}
         />
       </div>
     );
