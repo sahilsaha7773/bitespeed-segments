@@ -1,4 +1,4 @@
-// @ts-nocheck 
+// @ts-nocheck
 import { useState } from "react";
 import "./App.css";
 import useMyStore from "./store";
@@ -12,14 +12,16 @@ function App() {
   return (
     <>
       <Parent parent={segmentJson} parentKey={segmentJson.key} />
-      {JSON.stringify(segmentJson)}
-      <input
-        type="text"
-        onChange={(e) => setCustomSegmentJson(e.target.value)}
-      />
-      <button onClick={() => setSegmentJson(JSON.parse(customSegmentJson))}>
-        Set Segment
-      </button>
+      <div>
+        <div>{JSON.stringify(segmentJson)}</div>
+        <textarea
+          type="text"
+          onChange={(e) => setCustomSegmentJson(e.target.value)}
+        />
+        <button onClick={() => setSegmentJson(JSON.parse(customSegmentJson))}>
+          Set Segment
+        </button>
+      </div>
     </>
   );
 }
