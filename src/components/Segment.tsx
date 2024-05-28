@@ -4,7 +4,7 @@ import useMyStore from "../store";
 
 const Segment = ({ index, segment, operatorType }) => {
   const [type, setType] = useState(segment.type);
-  const [segmentValue, setSegmentValue] = useState(segment.value);
+  // const [segmentValue, setSegmentValue] = useState(segment.value);
   const segmentJson = useMyStore((state) => state.segmentJson);
   const setSegmentJson = useMyStore((state) => state.setSegmentJson);
   const onValueUpdate = (newValue, json?) => {
@@ -137,18 +137,18 @@ const Segment = ({ index, segment, operatorType }) => {
       {type === "text" && (
         <input
           type="text"
-          value={segmentValue}
+          // value={segmentValue}
           onChange={(e) => {
-            setSegmentValue(e.target.value);
+            // setSegmentValue(e.target.value);
             onValueUpdate(e.target.value);
           }}
         />
       )}
       {type === "dropdown" && (
         <select
-          value={segmentValue}
+          // value={segmentValue}
           onChange={(e) => {
-            setSegmentValue(e.target.value);
+            // setSegmentValue(e.target.value);
             onValueUpdate(e.target.value);
           }}
         >
